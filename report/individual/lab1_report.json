@@ -1,0 +1,227 @@
+{
+ "seed": 3125,
+ "predictions": {
+  "ml_f1": {
+   "text": "F1 ~0.87, precision cao hơn recall vì mô hình dự đoán spam khá chính xác nhưng lại bỏ sót nhiều tin nhắn spam thực tế.",
+   "time": "15:08:15"
+  },
+  "ml_lr": {
+   "text": "lr = 0.001: Đường loss gần như đường thẳng nằm ngang, giảm rất chậm và thoải,lr = 50: Đường loss dao động lên xuống mạnh, có thể tăng vọt, không hội tụ ổn định.",
+   "time": "15:13:38"
+  },
+  "dl_curve": {
+   "text": "val loss không giảm mãi, ban đầu giảm sau đó tăng nhẹ do overfit, MLP sẽ bằng hoặc hơn logistic regression ở Phần 1 về F1 tùy thuộc vào dữ liệu",
+   "time": "15:24:58"
+  },
+  "dl_relu": {
+   "text": "0.9",
+   "time": "15:28:45"
+  },
+  "emb_search": {
+   "text": "spam",
+   "time": "15:35:32"
+  },
+  "emb_tricky": {
+   "text": "Encoder và LogReg sẽ thắng vì hiểu được ngữ cảnh và từ đồng nghĩa, trong khi BoW chỉ đếm từ khóa cứng nhắc nên dễ bị lừa.",
+   "time": "15:39:57"
+  },
+  "llm_models": {
+   "text": "Model terrax có F1 cao hơn model luna nhưng chênh lệch không nhiều (khoảng 1-3%). Model lớn đắt gấp 10 đến 30 lần. LLM zero-shot thường thua (hoặc chỉ bằng) mô hình 3b vì 3b đã được huấn luyện với đáp án trên chính tập dữ liệu này.",
+   "time": "15:52:54"
+  },
+  "llm_fewshot": {
+   "text": "F1 sẽ tăng do mô hình học được ranh giới phân loại thực tế từ ví dụ. Chi phí sẽ tăng vì mỗi câu hỏi bị kèm theo các ví dụ.",
+   "time": "16:12:53"
+  },
+  "tradeoff": {
+   "text": "Các mô hình như GPT, Claude hoặc các LLM thương mại/mã nguồn mở lớn chạy qua API mạng thường có độ trễ p95 lớn hơn rất nhiều so với ngưỡng 50 ms . Chất lượng F1 rất cao, nhưng sẽ nằm sâu bên phải vạch đỏ. Các mô hình Transformer cỡ lớn chưa tối ưu , chạy CPU cũng có thể nằm bên phải. Các mô hình truyền thống, nhanh nhưng tỷ lệ lỗi cao hơn sẽ nằm phía trên bên trái, mô hình transformer nhỏ gọn được tối ưu tốt sẽ nằm góc dưới bên phải hoặc trung tâm.",
+   "time": "16:49:14"
+  },
+  "hard_eval": {
+   "text": "Accuracy giảm mạnh. BoW kém nhất ở nhóm né từ khoá và thao túng, LLM kém ở prompt injection.",
+   "time": "16:49:51"
+  }
+ },
+ "checks": {
+  "1.1 vectorize": true,
+  "1.2 sigmoid / predict_proba": true,
+  "1.3 train_logreg": true,
+  "1.4 metrics": true,
+  "2.1 build_mlp": true,
+  "2.2 train_mlp": true,
+  "3.1–3.2 cosine / top_k_similar": true,
+  "3.3 knn_predict": true,
+  "4.2–4.3 prompt / parse_label": true,
+  "4.1 + 4.4 call_openai / llm_classify_batch": true,
+  "tính tay: baseline_accuracy": true,
+  "tính tay: sigmoid_0": true,
+  "tính tay: f1_example": true,
+  "tính tay: cosine_example": true,
+  "tính tay: llm_cost_per_day": true
+ },
+ "experiments": [
+  {
+   "key": "ml_f1",
+   "time": "15:08:19"
+  },
+  {
+   "key": "ml_lr",
+   "time": "15:13:40"
+  },
+  {
+   "key": "dl_curve",
+   "time": "15:25:00"
+  },
+  {
+   "key": "dl_relu",
+   "time": "15:28:48"
+  },
+  {
+   "key": "emb_search",
+   "time": "15:35:34"
+  },
+  {
+   "key": "emb_tricky",
+   "time": "15:40:17"
+  },
+  {
+   "key": "llm_models",
+   "time": "15:52:55"
+  },
+  {
+   "key": "llm_models",
+   "time": "15:56:01"
+  },
+  {
+   "key": "llm_models",
+   "time": "15:57:42"
+  },
+  {
+   "key": "llm_models",
+   "time": "16:12:06"
+  },
+  {
+   "key": "llm_fewshot",
+   "time": "16:12:54"
+  },
+  {
+   "key": "llm_models",
+   "time": "16:14:32"
+  },
+  {
+   "key": "llm_models",
+   "time": "16:16:57"
+  },
+  {
+   "key": "llm_models",
+   "time": "16:26:01"
+  },
+  {
+   "key": "llm_models",
+   "time": "16:27:30"
+  },
+  {
+   "key": "llm_models",
+   "time": "16:32:34"
+  },
+  {
+   "key": "llm_fewshot",
+   "time": "16:37:39"
+  },
+  {
+   "key": "llm_models",
+   "time": "16:39:22"
+  },
+  {
+   "key": "llm_models",
+   "time": "16:48:20"
+  },
+  {
+   "key": "llm_fewshot",
+   "time": "16:48:41"
+  },
+  {
+   "key": "tradeoff",
+   "time": "16:49:15"
+  },
+  {
+   "key": "hard_eval",
+   "time": "16:49:52"
+  }
+ ],
+ "challenge": 5,
+ "results": {
+  "1. BoW + LogReg (tự code)": {
+   "accuracy": 0.983225806451613,
+   "precision": 0.9880952380952381,
+   "recall": 0.8736842105263158,
+   "f1": 0.9273743016759777,
+   "f1_SUB": 0.9473684210526316,
+   "train_s": 8.103636471999948,
+   "msg_per_s": 4599.011695529136,
+   "p50_ms": 0.058650499966006464,
+   "p95_ms": 0.11473489999502802,
+   "usd_per_1k": 0.0
+  },
+  "2. BoW + MLP (deep learning)": {
+   "accuracy": 0.983225806451613,
+   "precision": 0.9767441860465116,
+   "recall": 0.8842105263157894,
+   "f1": 0.9281767955801105,
+   "f1_SUB": 0.9189189189189189,
+   "train_s": 5.944524773000012,
+   "msg_per_s": 24072.734571651625,
+   "p50_ms": 0.2605539999649409,
+   "p95_ms": 0.30384519999415716,
+   "usd_per_1k": 0.0
+  },
+  "3a. Encoder (MiniLM) + kNN": {
+   "accuracy": 0.9690322580645161,
+   "precision": 0.8317757009345794,
+   "recall": 0.9368421052631579,
+   "f1": 0.8811881188118812,
+   "f1_SUB": 0.9743589743589743,
+   "train_s": 82.24591103300008,
+   "msg_per_s": 23.86726598952045,
+   "p50_ms": 51.75247300007868,
+   "p95_ms": 73.15073149989074,
+   "usd_per_1k": 0.0
+  },
+  "3b. Encoder (MiniLM) + LogReg": {
+   "accuracy": 0.9870967741935484,
+   "precision": 0.956989247311828,
+   "recall": 0.9368421052631579,
+   "f1": 0.946808510638298,
+   "f1_SUB": 0.9473684210526316,
+   "train_s": 82.66659220400015,
+   "msg_per_s": 28.913479248846087,
+   "p50_ms": 28.799086499930127,
+   "p95_ms": 39.02177665015642,
+   "usd_per_1k": 0.0
+  },
+  "3c. Encoder (MiniLM) + MLP head": {
+   "accuracy": 0.9896774193548387,
+   "precision": 0.978021978021978,
+   "recall": 0.9368421052631579,
+   "f1": 0.956989247311828,
+   "f1_SUB": 0.9473684210526316,
+   "train_s": 83.70407586500005,
+   "msg_per_s": 29.32659122765964,
+   "p50_ms": 30.985609000254044,
+   "p95_ms": 55.669818750334336,
+   "usd_per_1k": 0.0
+  },
+  "4a. LLM nhỏ zero-shot": {
+   "accuracy": 1.0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "f1_SUB": 1.0,
+   "train_s": 0.0,
+   "msg_per_s": 1.316909614996493,
+   "p50_ms": 667.5697069999842,
+   "p95_ms": 971.405546500227,
+   "usd_per_1k": 0.028093333333333335
+  }
+ }
+}
